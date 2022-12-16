@@ -16,12 +16,12 @@ export class ChangeScopesDirectClientV1 extends DirectClient<any> implements ICh
         let timing = this.instrument(correlationId, 'change_scopes.get_scope_by_id');
         
         try {
-            return await this._controller.getScopeById(correlationId, id);
+            let res = await this._controller.getScopeById(correlationId, id);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -29,12 +29,12 @@ export class ChangeScopesDirectClientV1 extends DirectClient<any> implements ICh
         let timing = this.instrument(correlationId, 'change_scopes.change_scope');
 
         try {
-            return await this._controller.changeScope(correlationId, id);
+            let res = await this._controller.changeScope(correlationId, id);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -42,12 +42,12 @@ export class ChangeScopesDirectClientV1 extends DirectClient<any> implements ICh
         let timing = this.instrument(correlationId, 'change_scopes.change_scope_element');
         
         try {
-            return await this._controller.changeScopeElement(correlationId, id, element);
+            let res = await this._controller.changeScopeElement(correlationId, id, element);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }
 
@@ -55,12 +55,12 @@ export class ChangeScopesDirectClientV1 extends DirectClient<any> implements ICh
         let timing = this.instrument(correlationId, 'change_scopes.delete_scope_by_id');
 
         try {
-            return await this._controller.deleteScopeById(correlationId, id);
+            let res = await this._controller.deleteScopeById(correlationId, id);
+            timing.endTiming();
+            return res;
         } catch (err) {
             timing.endFailure(err);
             throw err;
-        } finally {
-            timing.endTiming();
         }
     }   
 }

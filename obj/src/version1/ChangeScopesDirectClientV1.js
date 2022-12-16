@@ -21,14 +21,13 @@ class ChangeScopesDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient 
         return __awaiter(this, void 0, void 0, function* () {
             let timing = this.instrument(correlationId, 'change_scopes.get_scope_by_id');
             try {
-                return yield this._controller.getScopeById(correlationId, id);
+                let res = yield this._controller.getScopeById(correlationId, id);
+                timing.endTiming();
+                return res;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -36,14 +35,13 @@ class ChangeScopesDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient 
         return __awaiter(this, void 0, void 0, function* () {
             let timing = this.instrument(correlationId, 'change_scopes.change_scope');
             try {
-                return yield this._controller.changeScope(correlationId, id);
+                let res = yield this._controller.changeScope(correlationId, id);
+                timing.endTiming();
+                return res;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -51,14 +49,13 @@ class ChangeScopesDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient 
         return __awaiter(this, void 0, void 0, function* () {
             let timing = this.instrument(correlationId, 'change_scopes.change_scope_element');
             try {
-                return yield this._controller.changeScopeElement(correlationId, id, element);
+                let res = yield this._controller.changeScopeElement(correlationId, id, element);
+                timing.endTiming();
+                return res;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }
@@ -66,14 +63,13 @@ class ChangeScopesDirectClientV1 extends pip_services3_rpc_nodex_1.DirectClient 
         return __awaiter(this, void 0, void 0, function* () {
             let timing = this.instrument(correlationId, 'change_scopes.delete_scope_by_id');
             try {
-                return yield this._controller.deleteScopeById(correlationId, id);
+                let res = yield this._controller.deleteScopeById(correlationId, id);
+                timing.endTiming();
+                return res;
             }
             catch (err) {
                 timing.endFailure(err);
                 throw err;
-            }
-            finally {
-                timing.endTiming();
             }
         });
     }

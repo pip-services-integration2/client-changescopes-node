@@ -6,7 +6,7 @@ import { ConsoleLogger } from 'pip-services3-components-nodex';
 import { ChangeScopesMemoryPersistence } from 'service-changescopes-node';
 import { ChangeScopesController } from 'service-changescopes-node';
 import { ChangeScopesHttpServiceV1 } from 'service-changescopes-node';
-import { ChangeScopesHttpClientV1 } from '../../src/version1/ChangeScopesHttpClientV1';
+import { ChangeScopesCommandableHttpClientV1 } from '../../src/version1/ChangeScopesCommandableHttpClientV1';
 import { ChangeScopesClientFixtureV1 } from './ChangeScopesClientFixtureV1';
 
 var httpConfig = ConfigParams.fromTuples(
@@ -15,9 +15,9 @@ var httpConfig = ConfigParams.fromTuples(
     "connection.port", 3000
 );
 
-suite('ChangeScopesHttpClientV1', ()=> {
+suite('ChangeScopesCommandableHttpClientV1', ()=> {
     let service: ChangeScopesHttpServiceV1;
-    let client: ChangeScopesHttpClientV1;
+    let client: ChangeScopesCommandableHttpClientV1;
     let fixture: ChangeScopesClientFixtureV1;
 
     suiteSetup(async () => {
@@ -32,12 +32,12 @@ suite('ChangeScopesHttpClientV1', ()=> {
             new Descriptor('pip-services', 'logger', 'console', 'default', '1.0'), logger,
             new Descriptor('service-changescopes', 'persistence', 'memory', 'default', '1.0'), persistence,
             new Descriptor('service-changescopes', 'controller', 'default', 'default', '1.0'), controller,
-            new Descriptor('service-changescopes', 'service', 'http', 'default', '1.0'), service
+            new Descriptor('service-changescopes', 'service', 'commandable-http', 'default', '1.0'), service
         );
         controller.setReferences(references);
         service.setReferences(references);
 
-        client = new ChangeScopesHttpClientV1();
+        client = new ChangeScopesCommandableHttpClientV1();
         client.setReferences(references);
         client.configure(httpConfig);
 

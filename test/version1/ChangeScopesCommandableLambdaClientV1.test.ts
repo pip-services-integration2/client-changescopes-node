@@ -2,10 +2,10 @@ const fs = require('fs')
 
 import { YamlConfigReader } from 'pip-services3-components-nodex';
 import { ChangeScopesClientFixtureV1 } from './ChangeScopesClientFixtureV1';
-import { ChangeScopesLambdaClientV1 } from '../../src/version1/ChangeScopesLambdaClientV1';
+import { ChangeScopesCommandableLambdaClientV1 } from '../../src/version1/ChangeScopesCommandableLambdaClientV1';
 import { ConfigParams } from 'pip-services3-commons-nodex';
 
-suite('ChangeScopesLambdaClient', ()=> {
+suite('ChangeScopesCommandableLambdaClient', ()=> {
     let path = './config/test_connections.yml';
     let config = new ConfigParams();
 
@@ -18,11 +18,11 @@ suite('ChangeScopesLambdaClient', ()=> {
     if (lambdaConfig.getAsNullableString("connection.protocol") != "aws")
         return;
 
-    let client: ChangeScopesLambdaClientV1;
+    let client: ChangeScopesCommandableLambdaClientV1;
     let fixture: ChangeScopesClientFixtureV1;
 
     setup(async () => {
-        client = new ChangeScopesLambdaClientV1();
+        client = new ChangeScopesCommandableLambdaClientV1();
         client.configure(lambdaConfig);
 
         fixture = new ChangeScopesClientFixtureV1(client);
